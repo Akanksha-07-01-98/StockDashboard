@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace SimpleTrader.Domain.Models
 {
-    public class Asset:DomainObject
+    public class DomainObject
     {
-        public Account Account {  get; set; }
-
-        public Stock Stock { get; set; }
-
-        public int Shares {  get; set; }
+        public int Id { get; set; }
     }
 }

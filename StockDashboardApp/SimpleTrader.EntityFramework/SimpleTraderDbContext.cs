@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using SimpleTrader.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,29 @@ using System.Threading.Tasks;
 
 namespace SimpleTrader.EntityFramework
 {
-    public class SimpleTraderDbContext
+    public class SimpleTraderDbContext:DbContext
     {
+        public SimpleTraderDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        protected SimpleTraderDbContext()
+        {
+        }
+
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<AssetTransaction> AssetTransactions { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<AssetTransaction>()
+                .OwnsOne(at => at.Stock);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }
