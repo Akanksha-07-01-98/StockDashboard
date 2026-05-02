@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="../SimpleTraderDomain/SimpleTrader.Domain.csproj" />
   <Project Path="SimpleTrader.EntityFramework/SimpleTrader.EntityFramework.csproj" />
+  <Project Path="SimpleTraderDomain/SimpleTrader.Domain.csproj" />
   <Project Path="StockDashboardApp/StockDashboardApp.csproj" />
 </Solution>

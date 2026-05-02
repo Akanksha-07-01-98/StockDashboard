@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleTrader.Domain
+namespace SimpleTrader.Domain.Models
 {
     public class Stock
     {
