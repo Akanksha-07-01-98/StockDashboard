@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="SimpleTrader.EntityFramework/SimpleTrader.EntityFramework.csproj" />
+  <Project Path="SimpleTrader.FinancialModellingPrepAPI/SimpleTrader.FinancialModellingPrepAPI.csproj" Id="67167d63-fc02-429c-a17f-10e760da2e05" />
   <Project Path="SimpleTraderDomain/SimpleTrader.Domain.csproj" />
   <Project Path="StockDashboardApp/StockDashboardApp.csproj" />
 </Solution>
