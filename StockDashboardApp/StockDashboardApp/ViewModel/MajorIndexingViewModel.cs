@@ -8,24 +8,56 @@ using System.Threading.Tasks;
 
 namespace StockDashboardApp.ViewModel
 {
-    public class MajorIndexViewModel
+    public class MajorIndexingViewModel:ViewModelBase
     {
         private readonly IMajorIndexService _majorIndexService;
+        private MajorIndex _dowJones;
 
-        public MajorIndex DowJones { get; set; }
+        public MajorIndex DowJones
+        {
+            get { return _dowJones; }
+            set
+            {
 
-        public MajorIndex Nasdaq { get; set; }
+                _dowJones = value;
+                OnPropertyChanged(nameof(DowJones));
+            }
+        }
 
-        public MajorIndex Apple { get; set; }
+        private MajorIndex _nasdaq;
 
-        public MajorIndexViewModel(IMajorIndexService majorIndexService)
+        public MajorIndex Nasdaq
+        {
+            get { return _nasdaq; }
+            set
+            {
+
+                _nasdaq = value;
+                OnPropertyChanged(nameof(Nasdaq));
+            }
+        }
+
+        private MajorIndex _apple;
+
+        public MajorIndex Apple
+        {
+            get { return _apple; }
+            set
+            {
+
+                _apple = value;
+                OnPropertyChanged(nameof(Apple));
+            }
+        }
+
+        public MajorIndexingViewModel(IMajorIndexService majorIndexService)
         {
             _majorIndexService = majorIndexService;
         }
 
-        public static MajorIndexViewModel LoadMajorIndexes(IMajorIndexService majorIndexService) 
+        public static MajorIndexingViewModel LoadMajorIndexes(IMajorIndexService majorIndexService) 
         {
-            MajorIndexViewModel majorIndexViewModel = new MajorIndexViewModel(majorIndexService);
+            MajorIndexingViewModel majorIndexViewModel = new MajorIndexingViewModel(majorIndexService);
             majorIndexViewModel.LoadMajorIndexes();
             return majorIndexViewModel;
         }

@@ -8,10 +8,10 @@ namespace StockDashboardApp.ViewModel
 {
     public class HomeViewModel:ViewModelBase
     {
-        public MajorIndexViewModel MajorIndexViewModel { get; set; }
-        public HomeViewModel(MajorIndexViewModel majorIndexViewModel)
+        public MajorIndexingViewModel MajorIndexingViewModel { get; set; }
+        public HomeViewModel(MajorIndexingViewModel majorIndexingViewModel)
         {
-            MajorIndexViewModel = majorIndexViewModel;
+            MajorIndexingViewModel = majorIndexingViewModel;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace StockDashboardApp.Commands
                 switch (viewType)
                 {
                     case ViewType.Home:
-                        _navigator.CurrentViewModel = new HomeViewModel(MajorIndexViewModel
+                        _navigator.CurrentViewModel = new HomeViewModel(MajorIndexingViewModel
                             .LoadMajorIndexes(new MajorIndexService()));
                         break;
                     case ViewType.Portfolio:
