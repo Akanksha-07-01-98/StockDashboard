@@ -1,13 +1,15 @@
 ﻿using SimpleTrader.Domain.Services;
+using SimpleTrader.FinancialModellingPrepAPI.Results;
 using StockDashboardApp.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using System.Text.Json;
-using System.Net.Http.Json;
 
 namespace SimpleTrader.FinancialModellingPrepAPI.Service
 {
@@ -16,16 +18,14 @@ namespace SimpleTrader.FinancialModellingPrepAPI.Service
         public async Task<MajorIndex> GetMajorIndex(MajorIndexType indexType)
         {
             string symbol = GetStockSymbol(indexType);
-            string uri = $"https://financialmodelingprep.com/stable/quote?symbol={symbol}&apikey=OPiFfF88CslMZWUWhgip9sdaV4dVPlBj";
+            
 
-            using (HttpClient client = new HttpClient())
+            using (FinancialModelingPrepHttpClient client = new FinancialModelingPrepHttpClient())
             {
-                var response = await client.GetAsync(uri);
-                var json = await response.Content.ReadAsStringAsync();
+                string uri = $"quote?symbol={symbol}&apikey=OPiFfF88CslMZWUWhgip9sdaV4dVPlBj";
+                MajorIndex data = await client.GetAsync<MajorIndex>(uri);
 
-                var data = JsonSerializer.Deserialize<List<MajorIndex>>(json);
-
-                return data?.FirstOrDefault();
+                return data;
             }
         }
 
@@ -40,9 +40,8 @@ namespace SimpleTrader.FinancialModellingPrepAPI.Service
                 case MajorIndexType.Apple:
                     return "AAPL";
                 default:
-                    break;
+                    throw new Exception("MajorIndexType does not have a suffixed defined");
             }
-            return "^DJI";
         }
     }
 }

@@ -18,7 +18,5 @@ namespace StockDashboardApp.Models
         public string name { get; set; }
         public double price { get; set; }
         public double change { get; set; }
-
-
     }
 }
