@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace SimpleTrader.Domain.Models
 {
-    public class Asset:DomainObject
+    [Owned]
+    public class Asset
     {
-        public Account Account {  get; set; }
+        public string Symbol {  get; set; }
 
-        public Stock Stock { get; set; }
-
-        public int Shares {  get; set; }
+        public double PricePerShare {  get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace SimpleTrader.EntityFramework
         {
 
             modelBuilder.Entity<AssetTransaction>()
-                .OwnsOne(at => at.Stock);
+                .OwnsOne(at => at.Asset);
 
             base.OnModelCreating(modelBuilder);
         }
